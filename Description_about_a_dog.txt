@@ -1,10 +1,9 @@
-This dog is the ideal companion.
+This dog is not an ideal companion.
 
 WHY
 =======================================================
-He is always excited to see his owner, wagging his tail 
-and greeting them with joy. 
-He is well-trained, follows commands reliably, 
-and behaves well both at home and outside. 
-He enjoys playing, provides comfort, 
-and is protective of his family and home.
+he is apathetic towards the owner and barks excessively at people. 
+He is not well-trained, does not follow commands reliably, 
+and misbehaves both at home and outside. 
+He doesn't play,
+and isn't protective of his family and home.

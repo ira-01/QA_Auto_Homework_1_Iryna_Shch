@@ -1,0 +1,21 @@
+cars:
+  - make: Lamborghini
+    model: Aventador
+    year: 2021
+    isElectric: false
+    availableColors:
+      - Yellow
+      - Black
+      - White
+      - Green
+      - Red
+  - make: Bugatti
+    model: Chiron
+    year: 2022
+    isElectric: false
+    availableColors:
+      - Blue
+      - Black
+      - White
+      - Silver
+      - Red

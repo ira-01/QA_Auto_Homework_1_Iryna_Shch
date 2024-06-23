@@ -1,0 +1,28 @@
+<cars>
+  <car>
+    <make>Lamborghini</make>
+    <model>Aventador</model>
+    <year>2021</year>
+    <isElectric>false</isElectric>
+    <availableColors>
+      <color>Yellow</color>
+      <color>Black</color>
+      <color>White</color>
+      <color>Green</color>
+      <color>Red</color>
+    </availableColors>
+  </car>
+  <car>
+    <make>Bugatti</make>
+    <model>Chiron</model>
+    <year>2022</year>
+    <isElectric>false</isElectric>
+    <availableColors>
+      <color>Blue</color>
+      <color>Black</color>
+      <color>White</color>
+      <color>Silver</color>
+      <color>Red</color>
+    </availableColors>
+  </car>
+</cars>

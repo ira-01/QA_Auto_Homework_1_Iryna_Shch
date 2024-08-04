@@ -1,11 +1,11 @@
-public class Character {
+public class character {
     String name;                    //Ім'я персонажа.
     int health;                     //Кількість очок здоров'я персонажа.
     int strength;                   //Атрибут сили, який впливає на силу атаки.
     int defense;                    //Атрибут захисту, який впливає на зменшення шкоди, коли об'єкт захищається.
     static int characterCount;      //Статичне поле для відстеження кількості створених персонажів.
 
-    Character(String name, int health, int strength, int defense) {
+    character(String name, int health, int strength, int defense) {
         this.name = name;
         this.health = health;
         this.strength = strength;
@@ -15,7 +15,7 @@ public class Character {
 
 
 
-    public int Attack(Character otherPerson) {
+    public void attack(character otherPerson) {
         int damage;
         damage = this.strength - otherPerson.defense;
 
@@ -23,7 +23,7 @@ public class Character {
                 damage = 0;
             }
 
-        return damage;
+        otherPerson.takeDamage(damage);
     }
 
    public void takeDamage (int damage){
@@ -36,16 +36,7 @@ public class Character {
    }
 
     protected boolean isAlive (){
-       boolean isAlive;
-
-            if (this.health > 0) {
-                 isAlive = true;
-             }
-            else{
-                 isAlive = false;
-            }
-
-       return isAlive;
+       return this.health > 0;
    }
 
     protected void displayStatus (){

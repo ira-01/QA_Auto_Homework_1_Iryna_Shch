@@ -7,8 +7,8 @@ public class Main {
         Scanner select = new Scanner(System.in);
         boolean selected;
 
-        Character firstPerson = new Character("DemonHunter", 40, 17, 3);
-        Character secondPerson = new Character("DarkHorse", 53, 15, 4);
+        character firstPerson = new character("DemonHunter", 40, 17, 3);
+        character secondPerson = new character("DarkHorse", 53, 15, 4);
 
 
          while (firstPerson.isAlive() & secondPerson.isAlive()){
@@ -16,10 +16,10 @@ public class Main {
             selected = select.nextBoolean();
 
             if (selected = true) {
-                firstPerson.takeDamage(secondPerson.Attack(firstPerson));
+                secondPerson.attack(firstPerson);
             }
             else{
-                secondPerson.takeDamage(firstPerson.Attack(secondPerson));
+                firstPerson.attack(secondPerson);
             }
              firstPerson.displayStatus();
              secondPerson.displayStatus();
@@ -29,7 +29,7 @@ public class Main {
 
         firstPerson.displayStatus();
         secondPerson.displayStatus();
-        System.out.println("Person count = " + Character.characterCount);
+        System.out.println("Person count = " + character.characterCount);
         System.out.println("GAME OVER");
 
         }

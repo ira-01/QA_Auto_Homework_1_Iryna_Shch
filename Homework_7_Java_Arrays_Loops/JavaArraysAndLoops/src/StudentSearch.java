@@ -7,7 +7,7 @@ public class StudentSearch {
         String[] StudentName = {"Bread", "Andry", "Max", "Theo", "David"};
         Scanner NameIn = new Scanner(System.in);
         int i = 0;
-        Boolean Found = Boolean.FALSE;
+        Boolean isFound = Boolean.FALSE;
 
         System.out.println("Enter student ID");
         int StudentID = NameIn.nextInt();
@@ -15,13 +15,13 @@ public class StudentSearch {
         for (String Name : StudentName) {
             if (StudentID == studentIDs[i]) {
                 System.out.println(StudentName[i]);
-                Found = Boolean.TRUE;
+                isFound = Boolean.TRUE;
             }
             i ++;
 
         }
 
-        if (!Found) {
+        if (!isFound) {
            System.out.println("Do not find student");
         }
 

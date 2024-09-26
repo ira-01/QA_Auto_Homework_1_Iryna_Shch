@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 
 public class Main {
     public static void main(String[] args) {
@@ -8,10 +7,15 @@ public class Main {
         // Creating HashMap for user storage
         HashMap<String, User> users = new HashMap<>();
 
-        // Creating users and adding them to the HashMap
-        users.put("Kate", new User("Kate"));
-        users.put("Martin", new User("Martin"));
-        users.put("Diana", new User("Diana"));
+        // Initialize users separately, since User is a reference type
+        User kate = new User("Kate");
+        User martin = new User("Martin");
+        User diana = new User("Diana");
+
+        // Put users in HashMap
+        users.put("Kate", kate);
+        users.put("Martin", martin);
+        users.put("Diana", diana);
 
         // Adding contacts
         users.get("Kate").addContact(users.get("Martin"));
@@ -35,27 +39,27 @@ public class Main {
         // Reading messages
         System.out.println("\nMartin reads his messages:");
         for (Message message : users.get("Martin").getMessages()) {
-            users.get("Martin").readMessage(message);
-            System.out.println("Message from " + message.getSender().getUserName() + ": " + message.getText() + " (Status: " + message.getStatus() + ")");
-        }
+            if (message.getStatus() != MessageStatus.READ) {
+                System.out.println("Message from " + message.getSender().getUserName() + ": " + message.getText());
+                message.setStatus(MessageStatus.READ);
+            }
 
-        // Search messages with status SENT to Martin
-        System.out.println("\nSearching for SENT messages in Martin's inbox:");
-        ArrayList<Message> sentMessages = users.get("Martin").findMessagesByStatus(MessageStatus.SENT);
-        for (Message message : sentMessages) {
-            System.out.println("Message to " + message.getRecipient().getUserName() + ": " + message.getText());
-        }
+            // Search messages with status SENT to Martin
+            System.out.println("\nSearching for SENT messages in Martin's inbox:");
+            ArrayList<Message> sentMessages = users.get("Martin").findMessagesByStatus(MessageStatus.SENT);
+            for (Message sentMessage : sentMessages) {
+                System.out.println("Message to " + sentMessage.getRecipient().getUserName() + ": " + sentMessage.getText());
+            }
 
-        // Delete contact and message
-        users.get("Martin").removeContact(users.get("Diana"));
-        System.out.println("\nMartin removed Diana from contacts.");
+            // Delete contact and message
+            users.get("Martin").removeContact(users.get("Diana"));
 
-        // Checking, if the list is not empty before deleting the message
-        if (!sentMessages.isEmpty()) {
-            users.get("Martin").removeMessage(sentMessages.get(0));
-            System.out.println("Martin removed a SENT message.");
-        } else {
-            System.out.println("No SENT messages found to remove.");
+            // Removing SENT messages from Martin's inbox
+            System.out.println("\nRemoving SENT messages from Martin's inbox:");
+            for (Message sentMessage : users.get("Martin").findMessagesByStatus(MessageStatus.SENT)) {
+                users.get("Martin").removeMessage(sentMessage); // Remove each SENT message
+                System.out.println("Martin removed a SENT message.");
+            }
         }
     }
 }

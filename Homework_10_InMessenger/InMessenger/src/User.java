@@ -55,12 +55,17 @@ class User implements UserInterface {
     public void readMessage(Message message) {
         if (messages.contains(message) && message.getStatus() == MessageStatus.RECEIVED) {
             message.setStatus(MessageStatus.READ);
+        } else {
+            // If the message is not found or its status is not RECEIVED
+            System.out.println("Cannot read this message.");
         }
     }
 
     public void removeMessage(Message message) {
         messages.remove(message);
+
     }
+
 
     public ArrayList<Message> findMessagesByStatus(MessageStatus status) {
         ArrayList<Message> result = new ArrayList<>();

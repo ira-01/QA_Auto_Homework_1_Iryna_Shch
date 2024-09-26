@@ -3,34 +3,46 @@ import java.util.Scanner;   //Import scanner
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-    public static void main(String[] args) {      //створeння персонажів
+    public static void main(String[] args) {
         Scanner select = new Scanner(System.in);
         boolean selected;
 
-        character firstPerson = new character("DemonHunter", 40, 17, 3);
-        character secondPerson = new character("DarkHorse", 53, 15, 4);
+        Character firstPerson = new Character("DemonHunter", 40, 17, 3);
+        Character secondPerson = new Character("DarkHorse", 53, 15, 4);
 
 
-         while (firstPerson.isAlive() & secondPerson.isAlive()){
-            System.out.println("Select who beats 'false' = " + firstPerson.name + " or 'true' = " + secondPerson.name);
+        while (firstPerson.isAlive() && secondPerson.isAlive()) {
+            System.out.println("Select who attacks: 'false' for " + firstPerson.name + " or 'true' for " + secondPerson.name);
             selected = select.nextBoolean();
 
-            if (selected = true) {
+            if (selected) {
                 secondPerson.attack(firstPerson);
-            }
-            else{
+            } else {
                 firstPerson.attack(secondPerson);
             }
-             firstPerson.displayStatus();
-             secondPerson.displayStatus();
+
+            firstPerson.displayStatus();
+            secondPerson.displayStatus();
 
         }
 
-
+        System.out.println("Final Status:");
         firstPerson.displayStatus();
         secondPerson.displayStatus();
-        System.out.println("Person count = " + character.characterCount);
+
+
+        // Визначення переможця
+        if (firstPerson.isAlive()) {
+            System.out.println(firstPerson.name + " is the winner! ");  // Якщо перший персонаж живий, він переможець
+        } else {
+            System.out.println(secondPerson.name + " is the winner! ");  // Інакше другий персонаж переможець
+        }
+
+
+        System.out.println("Person count = " + Character.characterCount);
         System.out.println("GAME OVER");
 
-        }
+        select.close();
+
     }
+}

@@ -45,7 +45,13 @@ public class Circus<T> {
                 String name = parts[0].split(": ")[1];
                 String act = parts[1].split(": ")[1];
                 int experience = Integer.parseInt(parts[2].split(": ")[1].split(" ")[0]);
-                addPerformer((T) new CircusPerformer(name, act, experience));
+
+                // Adding data validation
+                try {
+                    addPerformer((T) new CircusPerformer(name, act, experience));
+                } catch (InvalidExperienceException e) {
+                    System.out.println("Error loading performer from file: " + e.getMessage());
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();

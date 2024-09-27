@@ -5,10 +5,22 @@ public class Main {
     public static void main(String[] args) {
 
         Circus<CircusPerformer> circus = new Circus<>();
-        circus.addPerformer(new CircusPerformer("Jim", "Magician", 7));
-        circus.addPerformer(new CircusPerformer("Lily", "Acrobatics", -5));
 
-        // Save artist to file
+        // Add artist Jim
+        try {
+            circus.addPerformer(new CircusPerformer("Jim", "Magician", 7));
+        } catch (InvalidExperienceException e) {
+            System.out.println("Error adding performer Jim: " + e.getMessage());
+        }
+
+        // Add artist Lily
+        try {
+            circus.addPerformer(new CircusPerformer("Lily", "Acrobatics", -5)); // тут буде викинуто виняток
+        } catch (InvalidExperienceException e) {
+            System.out.println("Error adding performer Lily: " + e.getMessage());
+        }
+
+        // Save artists to file
         circus.saveToFile("circusPerformers.txt");
 
         // Loading artist from a file

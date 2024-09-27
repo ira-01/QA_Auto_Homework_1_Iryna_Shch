@@ -4,7 +4,7 @@ public class CircusPerformer {
     private int experience;
 
     // constructor
-    public CircusPerformer(String name, String act, int experience) {
+    public CircusPerformer(String name, String act, int experience) throws InvalidExperienceException {
         this.name = name;
         this.act = act;
         try {
